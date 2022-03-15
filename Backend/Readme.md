@@ -1,1 +1,2 @@
-Juego de encadenar palabras en java con interfaz por consola. Programa estandar, faltan pulir algunos detalles.
+Juego de encadenar palabras en java con interfaz por consola.
+Backend 80%
