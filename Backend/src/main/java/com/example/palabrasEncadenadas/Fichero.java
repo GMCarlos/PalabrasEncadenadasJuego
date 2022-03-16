@@ -1,4 +1,4 @@
-package Backend;
+package com.example.palabrasEncadenadas;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.util.Random;
 import java.nio.charset.StandardCharsets;
 
 public class Fichero {
-    static String rutaFichero = "C://Users//carlo//Desktop//Prueba//PalabrasEncadenadasJuego//Silabas//backend//diccionario.txt";
+    static String rutaFichero = "C://Users//carlo//Desktop//PalabrasEncadenadas//Backend//src//main//java//com//example//palabrasEncadenadas//diccionario.txt";
     static String ultimaPalabra;
 
     public Fichero(){

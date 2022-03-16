@@ -1,4 +1,4 @@
-package Backend;
+package com.example.palabrasEncadenadas;
 import java.util.ArrayList;
 public class NuevoJuego {
     private String palabra;
