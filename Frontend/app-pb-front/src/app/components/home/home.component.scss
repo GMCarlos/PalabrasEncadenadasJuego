@@ -1,0 +1,145 @@
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title-text {
+    padding-top: 5px;
+    font-size: 1.85rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    margin-top: 5%;
+    background-color: #DDDDDC;
+}
+
+.nuevaPalabra input {
+    height: 20px;
+    margin-bottom: 25px;
+    width: 95%;
+}
+
+.surrender {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    margin-top: 15%;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 20px;
+    height: 20%;
+    border-radius: 5px;
+}
+
+.surrender-text {
+    margin: auto;
+    color: white;
+    font-size: 18px;
+}
+
+
+
+.resolve {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+    margin-top: 15%;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 20px;
+    height: 30%;
+    border-radius: 5px;
+}
+
+.resolve-text {
+    margin: auto;
+    color: white;
+    font-size: 15px;
+}
+
+.reference-word {
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    min-height: 26px;
+}
+
+.arrow {
+    margin-top: 50px;
+}
+
+.lastWordTitle {
+    text-transform: uppercase;
+    font-family: Helvetica, sans-serif;
+}
+
+.nuevaPalabra {
+    font-family: Helvetica, sans-serif;
+}
+
+.nuevaPalabraTitle {
+    text-transform: uppercase;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    background-color: #DDDDDC;
+    flex-direction: column;
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    border: 4px solid black;
+    width: 20%;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #3B7CCC;
+    color: white;
+}
+
+.rating {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: Helvetica, sans-serif;
+}
+
+.line {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom:solid 1px grey;
+    width:26%;
+    height:10px;
+    
+    margin-bottom: 1%;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    max-height: 100px;
+}
+
+.container div {
+    height: 36%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
