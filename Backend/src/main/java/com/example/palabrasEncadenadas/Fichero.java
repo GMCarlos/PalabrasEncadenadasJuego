@@ -6,7 +6,7 @@ import java.util.Random;
 import java.nio.charset.StandardCharsets;
 
 public class Fichero {
-    static String rutaFichero = "C://Users//carlo//Desktop//PalabrasEncadenadas//Backend//src//main//java//com//example//palabrasEncadenadas//diccionario.txt";
+    static String rutaFichero = "C://Users//carlo//Desktop//PalabrasEncadenadas//Backend//src//main//java//com//example//palabrasEncadenadas//repository//diccionario.txt";
     static String ultimaPalabra;
 
     public Fichero(){
