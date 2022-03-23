@@ -1,4 +1,4 @@
-package com.example.palabrasEncadenadas;
+/*package com.example.palabrasEncadenadas;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -117,3 +117,4 @@ public class Fichero {
    
     
 }
+*/

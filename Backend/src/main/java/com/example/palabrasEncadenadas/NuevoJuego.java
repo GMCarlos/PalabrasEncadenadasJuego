@@ -1,16 +1,20 @@
 package com.example.palabrasEncadenadas;
 import java.util.ArrayList;
+
+import com.example.palabrasEncadenadas.controllers.PalabrasController;
+
 public class NuevoJuego {
     private String palabra;
     private int puntos;
     private Silabeador silabeador;
-    private Fichero fichero;
+    private PalabrasController palabrasController;
+    //private Fichero fichero;
 
     public NuevoJuego() {
         this.puntos     = 0;
         this.silabeador = new Silabeador();
-        this.fichero    = new Fichero();
-        this.palabra    = Fichero.ultimaPalabra;
+        this.palabrasController = new PalabrasController();
+        this.palabra    = this.palabrasController.cargarPalabra();
     }
 
     //Almacenar las palabras insertadas para que no se puedan repetir y evitar así bucles
@@ -27,7 +31,7 @@ public class NuevoJuego {
                 System.out.println("Encadena la siguiente palabra: " + this.palabra);
                 System.out.println("Inserte su palabra:");
                 String palabraEscrita = System.console().readLine();
-                if(fichero.existe(palabraEscrita)){
+                if(this.palabrasController.buscarPalabra(palabraEscrita)){
                     //Comprobar que la primera silaba es igual a la ultima de this.palabra
                     ArrayList<String> palabraEscritaEnSilabas = silabeador.silabear(palabraEscrita);
                     ArrayList<String> palabraAnteriorEscritaEnSilabas = silabeador.silabear(this.palabra);
@@ -42,9 +46,8 @@ public class NuevoJuego {
                         System.out.println("Puntos actuales = " + this.puntos);
                     }else{
                         System.out.println("Las sílabas no coinciden!!!");
-                        System.out.println("La silaba " + palabraEscritaEnSilabas.get(0) + " de " + palabraEscrita +
-                        " no coincide con " + palabraAnteriorEscritaEnSilabas.get(palabraAnteriorEscritaEnSilabas.size()-1) + " de "
-                        + this.palabra);
+                        System.out.println("La silaba " + palabraAnteriorEscritaEnSilabas.get(palabraAnteriorEscritaEnSilabas.size()-1) + " de "
+                        + this.palabra + " no coincide con "+ palabraEscritaEnSilabas.get(0) + " de " + palabraEscrita);
                     }
 
                 }else{
