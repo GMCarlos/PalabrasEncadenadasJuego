@@ -7,11 +7,14 @@ import com.example.palabrasEncadenadas.services.PalabrasServiceImpl;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/palabras")
 public class PalabrasController {
     private final PalabrasService palabrasService;
+    
 
     public PalabrasController() {
         this.palabrasService = new PalabrasServiceImpl();
