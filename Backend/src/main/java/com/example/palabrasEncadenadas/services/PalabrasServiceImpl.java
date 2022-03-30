@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import com.example.palabrasEncadenadas.Silabeador;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -14,7 +16,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 public class PalabrasServiceImpl implements PalabrasService{
     //static String rutaFichero = "C://Users//carlo//Desktop//PalabrasEncadenadas//Backend//src//main//java//com//example//palabrasEncadenadas//repository//diccionario.txt";
     static String url = "https://palabrasencadenadas-b5f62-default-rtdb.europe-west1.firebasedatabase.app/.json";
-    static String ultimaPalabra;
+    static String ultimaPalabra;    //palabra de la izquierda, de la que cogemos la ultima silaba
+    static String nuevaPalabraInsertada;    //palabra de la derecha, de la que cogemos la primera silaba
     private ArrayList<String> diccionario;
 
     public PalabrasServiceImpl(){
@@ -51,7 +54,6 @@ public class PalabrasServiceImpl implements PalabrasService{
                 sb.deleteCharAt(0);
                 this.diccionario.add(sb.toString());
             }
-            System.out.println("Hola");
             
 		} catch (Exception e) {
 			// Manejar excepción
@@ -64,8 +66,11 @@ public class PalabrasServiceImpl implements PalabrasService{
     @Override
     public Boolean existe (String palabra) {
         boolean existePalabra = false;
+        
         if(this.diccionario.contains(palabra)){
+            nuevaPalabraInsertada = palabra;
             existePalabra = true;
+            
         }
         return existePalabra;
     }
@@ -79,6 +84,7 @@ public class PalabrasServiceImpl implements PalabrasService{
         //generate random values from [0-646614]
         int int_random = rand.nextInt(upperbound);
         texto = this.diccionario.get(int_random);
+        ultimaPalabra = texto;
         return texto;
     }
 
@@ -106,5 +112,42 @@ public class PalabrasServiceImpl implements PalabrasService{
 		// Regresar resultado, pero como cadena, no como StringBuilder
 		return resultado.toString();
 	}
+
+
+
+    @Override
+    public String getPrimeraPalabraSilaba() {
+        ArrayList<String> silabas = new ArrayList<String>();
+        Silabeador silabeador = new Silabeador();
+        silabas = silabeador.silabear(ultimaPalabra);
+        return silabas.get(silabas.size()-1);
+    }
+
+
+
+    @Override
+    public String getUltimaPalabraSilaba() {
+        ArrayList<String> silabas = new ArrayList<String>();
+        Silabeador silabeador = new Silabeador();
+        silabas = silabeador.silabear(nuevaPalabraInsertada);
+        String lastSilaba = silabas.get(0);
+        
+        String silabaPrimeraPalabra;
+        String silabaUltimaPalabra;
+        //Si coinciden las silabas, guardo la ultimaPalabra con el valor de nuevaPalabraInsertada
+        silabas.clear();
+        silabas = silabeador.silabear(ultimaPalabra);
+        silabaPrimeraPalabra = silabas.get(silabas.size()-1);
+
+        silabas.clear();
+        silabas = silabeador.silabear(nuevaPalabraInsertada);
+        silabaUltimaPalabra = silabas.get(0);
+        if(silabaPrimeraPalabra.equals(silabaUltimaPalabra)){
+            //guardo la ultimaPalabra con el valor de nuevaPalabraInsertada
+            ultimaPalabra=nuevaPalabraInsertada;
+        }
+        
+        return lastSilaba;
+    }
     
 }

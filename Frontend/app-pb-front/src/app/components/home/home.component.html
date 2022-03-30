@@ -23,25 +23,14 @@
     </div>
     <div class="nuevaPalabra">
         <p class="nuevaPalabraTitle">Inserte una palabra</p>
-        <input type="text" [(ngModel)]="nombreInsertado">
-        <div class="resolve" (click)="buscarPalabra()">
-            <a class="resolve-text">Comprobar</a>
+        <input type="text" placeholder="palabra" [(ngModel)]="insertedWord">
+        <div class="resolve" (click)="siguienteTurno()">
+            <!--<a class="resolve-text">Comprobar</a> -->
+            <button class="glow-on-hover" type="button">Comprobar</button>
         </div>
     </div>
   </div>
-  
-
-  <!--
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-    <li>
-      <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-    </li>
-    <li>
-      <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-    </li>
-    <li>
-      <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-    </li>
-  </ul>-->
-  
+  <div class="error" *ngIf="palabraNoExiste">¡La palabra insertada no existe!</div>
+  <div class="error" *ngIf="silabasNoCoinciden">La sílaba {{this.silabaPrimeraPalabra}} de {{this.lastWord}} no coincide con la sílaba {{this.silabaUltimaPalabra}} de la palabra {{this.insertedWord}}.</div>
+  <div class="sucess" *ngIf="puntoGanado">¡Has ganado un punto!</div>
+  <div class="error" *ngIf="palabraVacia">Inserte una palabra.</div>

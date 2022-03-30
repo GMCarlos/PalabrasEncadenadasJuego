@@ -8,5 +8,9 @@ public interface PalabrasService {
     Boolean existe(String palabra);
 
     String generarPalabraAleatoria();
+
+    String getPrimeraPalabraSilaba();
+
+    String getUltimaPalabraSilaba();
     
 }

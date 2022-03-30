@@ -11,7 +11,6 @@ public class NuevoJuego {
     //private Fichero fichero;
 
     public NuevoJuego() {
-        this.puntos     = 0;
         this.silabeador = new Silabeador();
         this.palabrasController = new PalabrasController();
         this.palabra    = this.palabrasController.cargarPalabra();
