@@ -1,19 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import {MatDialog} from '@angular/material/dialog';
+import { SurrenderDialogComponent } from '../dialogs/surrender-dialog/surrender-dialog.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
+
 export class HomeComponent implements OnInit {
   title:string               = 'Palabras encadenadas';
   contador:number;
   lastWord:string            = null;
   insertedWord:string        = null;
   url:string                 = "http://localhost:8081/palabras";
-  urlBuscar:string           = "http://localhost:8081/palabras/buscar?buscarPalabra=";
+  urlBuscar:string           = this.url+"/buscar?buscarPalabra=";
   existePalabra:boolean      = false;
   palabraNoExiste:boolean    = false;
   silabasNoCoinciden:boolean = false;
@@ -22,8 +25,13 @@ export class HomeComponent implements OnInit {
   silabaPrimeraPalabra:String;
   silabaUltimaPalabra:String;
   error;
+
+  animal: string;
+  name: string;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              public dialog: MatDialog
+              ) { }
 
   ngOnInit() {
     this.contador        = 0;
@@ -37,9 +45,22 @@ export class HomeComponent implements OnInit {
     
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(SurrenderDialogComponent);
+
+    /*dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });*/
+  }
+
+  
+
   incrementarContador():void {
     this.contador++;
   }
+
+
+  
 
     async getPalabra( url:string):Promise<Boolean>{
       return await new Promise((resolve, rejected) => {
